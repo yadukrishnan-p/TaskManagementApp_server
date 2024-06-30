@@ -13,6 +13,13 @@ app.use(cors());
 // let todos = [];
 
 
+// CORS configuration
+const corsOptions = {
+    origin: 'http://localhost:3000', // Replace with your frontend URL
+    optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
+
 // Define a route 
 app.get('/', (req, res) => {
     res.send('Hell World')
@@ -24,7 +31,7 @@ mongoose.connect('mongodb+srv://yadu:Task1234todo@clustera.okp5qio.mongodb.net/?
         console.log(`DB connected!`);
     })
     .catch((err) => {
-        console.log(err);
+        console.log('Failed to connect to DB',err);
     })
 
 // Create Schema (setup DB) 
